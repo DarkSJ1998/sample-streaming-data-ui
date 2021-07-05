@@ -6,12 +6,12 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   usersUrl: string = 'http://localhost:9000/api/users';
-  asyncUsersUrl: string = 'http://localhost:9000/api/users/async/method2';
+  asyncUsersUrl: string = 'http://localhost:9000/api/users/async/method';
 
   getUsersUrl = () => this.http.get(this.usersUrl);
 
-  getAsyncUsersUrl = () =>
-    this.http.get(this.asyncUsersUrl, {
+  getAsyncUsersUrl = (method: number) =>
+    this.http.get(this.asyncUsersUrl + method, {
       observe: 'body',
       responseType: 'json',
     });
