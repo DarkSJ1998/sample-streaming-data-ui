@@ -28,13 +28,13 @@ export class AppBodyComponent implements OnInit {
     });
   };
 
-  makeAsyncReq = () => {
+  makeAsyncReq = (method: number) => {
     console.debug('makeAsyncReq');
     this.code = 'Processing...';
     this.loading = true;
     this.users = [];
 
-    this.userService.getAsyncUsersUrl().subscribe((res: any) => {
+    this.userService.getAsyncUsersUrl(method).subscribe((res: any) => {
       console.debug(res);
       this.code = JSON.stringify(res);
       this.loading = false;
@@ -42,7 +42,7 @@ export class AppBodyComponent implements OnInit {
     });
   };
 
-  makeAsyncReqXhr = () => {
+  makeAsyncReqXhr = (method: number) => {
     console.debug('makeAsyncReqXhr');
     this.code = 'Processing...';
     this.loading = true;
@@ -67,7 +67,7 @@ export class AppBodyComponent implements OnInit {
       }
     };
 
-    xhr.open('GET', 'http://localhost:9000/api/users/async/method2');
+    xhr.open('GET', 'http://localhost:9000/api/users/async/method' + method);
     xhr.send();
   };
 }

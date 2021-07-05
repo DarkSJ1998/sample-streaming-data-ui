@@ -1,19 +1,43 @@
 <div style="background-color: antiquewhite; padding: 10px 20px">
   <div>
-    <p>Button 1: Get all the Users list at once (using Angular HttpModule)</p>
-    <p>Button 2: Get all the Users asynchronously (using Angular HttpModule)</p>
-    <p>Button 3: Get all the Users asynchronously (using JS XMLHttpRequest)</p>
+    <p>
+      Button 1: Get all the Users list at once (using Angular HttpModule)
+      <br />
+      <small> [Controller and Service return the data instantaneously] </small>
+    </p>
+    <p>
+      Button 2: Get all the Users asynchronously (using Angular HttpModule)
+      <br />
+      <small>
+        [Method 1: Service Method has the logic, Method 2: Controller itself has
+        the logic]
+      </small>
+    </p>
+    <p>
+      Button 3: Get all the Users asynchronously (using JS XMLHttpRequest)
+      <br />
+      <small>
+        [Method 1: Service Method has the logic, Method 2: Controller itself has
+        the logic]
+      </small>
+    </p>
   </div>
 
   <hr />
 
-  <div style="display: flex; justify-content: space-around">
-    <button class="btn btn-success" (click)="makeReq()">Get Users 1</button>
-    <button class="btn btn-primary" (click)="makeAsyncReq()">
-      Get Users 2
+  <div style="display: flex; justify-content: space-around; flex-wrap: wrap">
+    <button class="btn btn-success" (click)="makeReq()">Button 1</button>
+    <button class="btn btn-primary" (click)="makeAsyncReq(1)">
+      Button 2 (method 1)
     </button>
-    <button class="btn btn-danger" (click)="makeAsyncReqXhr()">
-      Get Users 3
+    <button class="btn btn-primary" (click)="makeAsyncReq(2)">
+      Button 2 (method 2)
+    </button>
+    <button class="btn btn-danger" (click)="makeAsyncReqXhr(1)">
+      Button 3 (method 1)
+    </button>
+    <button class="btn btn-danger" (click)="makeAsyncReqXhr(2)">
+      Button 3 (method 2)
     </button>
   </div>
 
@@ -49,7 +73,7 @@
           <td colspan="2" style="text-align: center">No records yet</td>
         </tr>
 
-        <!-- FOr async loading -->
+        <!-- For async loading -->
         <tr *ngIf="loading">
           <td colspan="2" style="text-align: center">
             <div class="spinner-border" role="status"></div>
